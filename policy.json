@@ -1,0 +1,16 @@
+{
+    "Version": "2008-10-17",
+    "Id": "405184066547",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::vo7ager0nlin33/*"
+        }
+    ]
+}
