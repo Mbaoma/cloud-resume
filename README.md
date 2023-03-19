@@ -3,5 +3,20 @@ Built with HTML, CSS, JavaScript, Python and hosted in AWS cloud. The site is se
 
 The infrastructure is setup using Terraform and a continuous integration and deployment pipeline is setup using Github Actions.
 
-## Solution
-- checkov -f filename
+# Solution
+## Part 1
+- To provision an S3 bucket using similar configuration WITHOUT running the code through the CI/CD pipeline:
+```bash
+terraform init
+terraform plan
+terraform apply
+```
+
+- To provision the S3 bucket WHILE running the code through a CI/CD pipeline, open a pull request.
+
+- To run ```Checkov``` tests on the configuration, 
+```bash
+$ checkov -f main.yml
+```
+
+You can view the static website hosted on the S3 bucket [here]().
