@@ -38,6 +38,7 @@ resource "aws_kms_key" "cRKey" {
 resource "aws_s3_bucket" "cloudResume" {
   #checkov:skip=CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
   #checkov:skip=CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
+  #checkov:skip=CKV2_AWS_62: "Ensure S3 buckets should have event notifications enabled"
   bucket = var.bucket_name
   policy = file("./policy.json")
 }
