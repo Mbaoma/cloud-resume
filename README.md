@@ -16,7 +16,7 @@ terraform apply
 
 - To run ```Checkov``` tests on the configuration, 
 ```bash
-$ checkov -f main.yml
+$ checkov -f main.tf
 ```
 
 You can view the static website hosted on the S3 bucket [here]().

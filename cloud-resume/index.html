@@ -255,6 +255,16 @@
 				
 			</div><!--//main-wrapper-->
 			
+	<script type="text/javascript">
+		var count = localStorage.getItem('visitCount');
+		if(count) {
+			count = parseInt(count) + 1;
+		} else {
+			count = 1;
+		}
+		localStorage.setItem('visitCount', count);
+		document.write("You have visited this page " + count + " time(s).");
+	</script>
 
 </body>
 </html> 
