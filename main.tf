@@ -76,10 +76,10 @@ resource "aws_s3_bucket_website_configuration" "crConfig" {
 }
 
 resource "aws_s3_bucket_object" "websiteFolder" {
-  bucket       = aws_s3_bucket.cloudResume.id
-  for_each     = fileset("./cloud-resume/", "**/*.*")
-  key          = "content/${each.key}"
-  source       = "./cloud-resume/${each.key}"
+  bucket   = aws_s3_bucket.cloudResume.id
+  for_each = fileset("./cloud-resume/", "**/*.*")
+  key      = "content/${each.key}"
+  source   = "./cloud-resume/${each.key}"
   #kms_key_id   = aws_kms_key.cRKey.arn
   content_type = lookup(tomap(local.mime_types), element(split(".", each.key), length(split(".", each.key)) - 1))
   etag         = filemd5("./cloud-resume/${each.key}")

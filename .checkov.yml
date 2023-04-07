@@ -9,3 +9,4 @@ skip-check:
   - CKV_AWS_144 #"Ensure that S3 bucket has cross-region replication enabled"
   - CKV2_AWS_61 #"Ensure that an S3 bucket has a lifecycle configuration"
   - CKV2_AWS_62 #"Ensure S3 buckets should have event notifications enabled"
+  - KV_AWS_186 #"Ensure S3 bucket Object is encrypted by KMS using a customer managed Key (CMK)"
