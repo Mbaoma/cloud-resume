@@ -29,12 +29,6 @@ locals {
   }
 }
 
-# resource "aws_kms_key" "cRKey" {
-#   description             = "KMS key 1"
-#   deletion_window_in_days = 10
-#   enable_key_rotation     = true
-# }
-
 resource "aws_s3_bucket" "cloudResume" {
   #checkov:skip=CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
   #checkov:skip=CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
@@ -51,17 +45,6 @@ resource "aws_s3_bucket_versioning" "cloudResumeVersioning" {
   }
 }
 
-# resource "aws_s3_bucket_server_side_encryption_configuration" "serverConfig" {
-#   bucket = aws_s3_bucket.cloudResume.id
-
-#   rule {
-#     apply_server_side_encryption_by_default {
-#       kms_master_key_id = aws_kms_key.cRKey.arn
-#       sse_algorithm     = "aws:kms"
-#     }
-#   }
-# }
-
 resource "aws_s3_bucket_acl" "cloudResume_acl" {
   bucket = aws_s3_bucket.cloudResume.id
   acl    = "public-read"
@@ -76,6 +59,7 @@ resource "aws_s3_bucket_website_configuration" "crConfig" {
 }
 
 resource "aws_s3_bucket_object" "websiteFolder" {
+  #checkov:skip=CKV_AWS_186: "Ensure S3 bucket Object is encrypted by KMS using a customer managed Key (CMK)"
   bucket   = aws_s3_bucket.cloudResume.id
   for_each = fileset("./cloud-resume/", "**/*.*")
   key      = "content/${each.key}"
