@@ -1,0 +1,12 @@
+framework: terraform
+
+# The goal is to reduce that list, not to grow it
+skip-check:
+  - CKV_AWS_20 #S3 Bucket has an ACL defined which allows public READ access
+  - CKV2_AWS_6 #"Ensure that S3 bucket has a Public Access block"
+  - CKV_AWS_18 #"Ensure the S3 bucket has access logging enabled"
+  - CKV_AWS_145 #"Ensure that S3 buckets are encrypted with KMS by default"
+  - CKV_AWS_144 #"Ensure that S3 bucket has cross-region replication enabled"
+  - CKV2_AWS_61 #"Ensure that an S3 bucket has a lifecycle configuration"
+  - CKV2_AWS_62 #"Ensure S3 buckets should have event notifications enabled"
+  - KV_AWS_186 #"Ensure S3 bucket Object is encrypted by KMS using a customer managed Key (CMK)"
