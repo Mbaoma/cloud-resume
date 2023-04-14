@@ -19,4 +19,4 @@ terraform apply
 $ checkov -f main.tf
 ```
 
-You can view the static website hosted on the S3 bucket [here]().
+You can view the static website hosted on the S3 bucket [here](https://onlinerresume8910543.s3.us-west-1.amazonaws.com/content/index.html).
