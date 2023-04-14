@@ -60,10 +60,10 @@ resource "aws_s3_bucket_website_configuration" "crConfig" {
 
 resource "aws_s3_bucket_object" "websiteFolder" {
   #checkov:skip=CKV_AWS_186: "Ensure S3 bucket Object is encrypted by KMS using a customer managed Key (CMK)"
-  bucket   = aws_s3_bucket.cloudResume.id
-  for_each = fileset("./cloud-resume/", "**/*.*")
-  key      = "content/${each.key}"
-  source   = "./cloud-resume/${each.key}"
+  bucket       = aws_s3_bucket.cloudResume.id
+  for_each     = fileset("./cloud-resume/", "**/*.*")
+  key          = "content/${each.key}"
+  source       = "./cloud-resume/${each.key}"
   content_type = lookup(tomap(local.mime_types), element(split(".", each.key), length(split(".", each.key)) - 1))
   etag         = filemd5("./cloud-resume/${each.key}")
 
